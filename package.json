@@ -6,9 +6,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node build/server.js",
-    "build": "node ace build --production && node ace migration:fresh --seed",
+    "build": "node ace build",
     "dev": "node ace serve --hmr",
     "seed": "node ace migration:fresh --seed",
+    "migrate": "node ace migration:run",
     "deploy": "npm run build && npm run start",
     "test": "node ace test",
     "lint": "eslint .",
