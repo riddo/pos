@@ -6,10 +6,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node build/server.js",
-    "build": "node ace build && node ace migration:fresh --seed --ignore-ts-errors",
+    "build": "node ace build && node ace migration:fresh --seed ",
     "dev": "node ace serve --hmr",
     "seed": "node ace migration:fresh --seed",
-    "deploy": "npm run build && npm run start",
+    "deploy": "npm run build && npm run start --ignore-ts-errors",
     "test": "node ace test",
     "lint": "eslint .",
     "format": "prettier --write .",
