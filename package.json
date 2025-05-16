@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node build/server.js",
-    "build": "node ace build --ignore-ts-errors",
+    "build": "node ace build --ignore-ts-errors && mkdir -p public",
     "dev": "node ace serve --hmr",
     "seed": "node ace migration:fresh --seed",
     "migrate": "node ace migration:run",
