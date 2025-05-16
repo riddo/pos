@@ -6,9 +6,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node build/server.js",
-    "build": "node ace build --production --ignore-ts-errors && npm run post-build",
+    "build": "node ace build --ignore-ts-errors && npm run post-build",
     "post-build": "cp -r public build/public || mkdir -p build/public",
-    "vercel-build": "node ace build --production --ignore-ts-errors && npm run post-build",
+    "vercel-build": "node ace build --ignore-ts-errors && npm run post-build",
     "dev": "node ace serve --hmr",
     "seed": "node ace migration:fresh --seed",
     "migrate": "node ace migration:run",
