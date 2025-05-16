@@ -1,0 +1,33 @@
+import { BaseSchema } from '@adonisjs/lucid/schema'
+
+export default class extends BaseSchema {
+  protected tableName = 'sales_details'
+
+  public async up() {
+    this.schema.createTable(this.tableName, (table) => {
+      table.increments('id') // Primary key
+      table
+        .integer('sales_header_id') // Relationship with sales_header table
+        .unsigned()
+        .references('id')
+        .inTable('sales_header')
+        .onDelete('CASCADE') // Cascade delete if sale header is removed
+        .notNullable()
+      table
+        .integer('product_id') // Relationship with products table
+        .unsigned()
+        .references('id')
+        .inTable('products')
+        .onDelete('CASCADE') // Cascade delete if product is removed
+        .notNullable()
+      table.integer('quantity').notNullable() // Quantity of product
+      table.decimal('unit_price', 12, 2).notNullable() // Unit price of the product
+      table.timestamp('created_at', { useTz: true }).defaultTo(this.now()) // Creation date
+      table.timestamp('updated_at', { useTz: true }).defaultTo(this.now()) // Update date
+    })
+  }
+
+  public async down() {
+    this.schema.dropTable(this.tableName) // Drops the table
+  }
+}
